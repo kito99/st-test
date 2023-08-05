@@ -22,17 +22,19 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   /** Set appIndex to enable SPA routing */
   // appIndex: 'demo/index.html',
 
-  plugins: [
+  // plugins: [
     /** Use Hot Module Replacement by uncommenting. Requires @open-wc/dev-server-hmr plugin */
     // hmr && hmrPlugin({ exclude: ['**/*/node_modules/**/*'], presets: [presets.litElement] }),
-    commonjs({
-      include: [
-        // the commonjs plugin is slow, list the required packages explicitly:
-        // 'node_modules/commonmark/lib/',
-        // 'node_modules/entities/lib/'
-      ]
-    })
-  ]
+  //   commonjs({
+  //     requireReturnsDefault: 'preferred',
+  //     defaultIsModuleExports: true,
+  //     include: [
+  //       // the commonjs plugin is slow, list the required packages explicitly:
+  //       // 'node_modules/commonmark',
+  //       'node_modules/entities'
+  //     ]
+  //   })
+  // ]
 
   // See documentation for all available options
 });
