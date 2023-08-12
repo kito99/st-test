@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
-import commonmark from "commonmark";
+import { micromark } from 'micromark';
 
 export class StTest extends LitElement {
   static styles = css`
@@ -10,11 +10,6 @@ export class StTest extends LitElement {
       color: var(--st-test-text-color, #000);
     }
   `;
-
-  private _reader = new commonmark.Parser();
-
-  private _writer = new commonmark.HtmlRenderer({ safe: true });
-
   @property({ type: String }) header = 'Hey there';
 
   @property({ type: Number }) counter = 5;
@@ -24,11 +19,11 @@ export class StTest extends LitElement {
   }
 
   render() {
-
+    const content = micromark('# Hello!')
     return html`
       <h2>${this.header} Nr. ${this.counter}!</h2>
       <h3>markdown:</h3>
-      <div>${this._writer.render(this._reader.parse('*Hello*'))}</div>
+      <div>${content}</div>
       <button @click=${this.__increment}>increment</button>
     `;
   }
