@@ -19,7 +19,8 @@ export class StTest extends LitElement {
   }
 
   render() {
-    const content = micromark('# Hello!')
+    const content = micromark('# Hello!');
+    console.log(content);
     return html`
       <h2>${this.header} Nr. ${this.counter}!</h2>
       <h3>markdown:</h3>

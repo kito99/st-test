@@ -15,23 +15,9 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     exportConditions: ['browser', 'development'],
   },
 
-  plugins: [
-    commonjs(
-    {
-      include: [
-        // the commonjs plugin is slow, list the required packages explicitly:
-        'node_modules/debug/src/index.js',
-        'node_modules/debug/src/browser.js',
-        'node_modules/debug/src/common.js',
-        'node_modules/ms/index.js',
-        // 'node_modules/entities/lib/*',
-      ],
-      exclude: [
-        'node_modules/debug/src/node.js'
-      ]
-    })
-  ],
-
+  // plugins: [
+  //   commonjs()
+  // ],
 
   /** Filter out lit dev mode logs */
   filterBrowserLogs(log) {
