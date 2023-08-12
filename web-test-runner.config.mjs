@@ -1,30 +1,26 @@
 // import { playwrightLauncher } from '@web/test-runner-playwright';
 import { fromRollup } from '@web/dev-server-rollup';
 import rollupCommonjs from '@rollup/plugin-commonjs';
+import rollupJson from '@rollup/plugin-json';
 
 const commonjs = fromRollup(rollupCommonjs);
+const json = fromRollup(rollupJson)
 
 const filteredLogs = ['Running in dev mode', 'lit-html is in dev mode'];
 
-export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
+export default /** @type {import('@web/test-runner').TestRunnerConfig} */ ({
   /** Test files to run */
   files: 'dist/test/**/*.test.js',
 
   /** Resolve bare module imports */
   nodeResolve: {
-    exportConditions: ['browser', 'development'],
+    exportConditions: ['browser', 'development']
   },
 
   plugins: [
-    commonjs({
-      include: [
-        // the commonjs plugin is slow, list the required packages explicitly:
-        'node_modules/commonmark/lib/*',
-        'node_modules/entities/lib/*',
-      ]
-    })
+    commonjs(),
+    json()
   ],
-
 
   /** Filter out lit dev mode logs */
   filterBrowserLogs(log) {
@@ -34,7 +30,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
       }
     }
     return true;
-  },
+  }
 
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
   // esbuildTarget: 'auto',

@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
-import commonmark from "commonmark";
+import { HtmlRenderer, Parser } from 'commonmark';
 
 export class StTest extends LitElement {
   static styles = css`
@@ -11,9 +11,9 @@ export class StTest extends LitElement {
     }
   `;
 
-  private _reader = new commonmark.Parser();
+  private _reader = new Parser();
 
-  private _writer = new commonmark.HtmlRenderer({ safe: true });
+  private _writer = new HtmlRenderer({ safe: true });
 
   @property({ type: String }) header = 'Hey there';
 
