@@ -9,6 +9,10 @@ const json = fromRollup(rollupJson)
 const filteredLogs = ['Running in dev mode', 'lit-html is in dev mode'];
 
 export default /** @type {import('@web/test-runner').TestRunnerConfig} */ ({
+  // tell the server to serve json files as js
+  mimeTypes: {
+    '**/*.json': 'js',
+  },
   /** Test files to run */
   files: 'dist/test/**/*.test.js',
 
@@ -30,10 +34,10 @@ export default /** @type {import('@web/test-runner').TestRunnerConfig} */ ({
       }
     }
     return true;
-  }
+  },
 
-  /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
-  // esbuildTarget: 'auto',
+  /** Compile JS for older browsers. Requiresnvm plugin */
+  esbuildTarget: 'auto',
 
   /** Amount of browsers to run concurrently */
   // concurrentBrowsers: 2,

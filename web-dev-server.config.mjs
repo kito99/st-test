@@ -10,6 +10,10 @@ const json = fromRollup(rollupJson)
 const hmr = process.argv.includes('--hmr');
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
+  // tell the server to serve json files as js
+  mimeTypes: {
+    '**/*.json': 'js',
+  },
   open: '/demo/',
   /** Use regular watch mode if HMR is not enabled. */
   watch: !hmr,
@@ -22,7 +26,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   // esbuildTarget: 'auto'
 
   /** Set appIndex to enable SPA routing */
-  // appIndex: 'demo/index.html',
+  appIndex: 'demo/index.html',
 
   plugins: [
     /** Use Hot Module Replacement by uncommenting. Requires @open-wc/dev-server-hmr plugin */

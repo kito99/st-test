@@ -24,11 +24,12 @@
   "dependencies": {
     "@rollup/plugin-json": "^6.0.0",
     "@types/commonmark": "^0.27.6",
+    "@web/dev-server-esbuild": "^0.4.1",
     "commonmark": "^0.30.0",
     "lit": "^2.7.6"
   },
   "overrides": {
-    "entities": "~2.0"
+    "entities": "^4.5.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.4.17",
