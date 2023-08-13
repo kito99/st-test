@@ -37,7 +37,7 @@ export default /** @type {import('@web/test-runner').TestRunnerConfig} */ ({
   },
 
   /** Compile JS for older browsers. Requiresnvm plugin */
-  esbuildTarget: 'auto',
+  // esbuildTarget: 'auto',
 
   /** Amount of browsers to run concurrently */
   // concurrentBrowsers: 2,
